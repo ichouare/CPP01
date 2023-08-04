@@ -1,7 +1,7 @@
 NAME = zombie
 
 
-HEADERS=  Zombie.hpp
+HEADERS =  Zombie.hpp
 
 
 FLAG =  c++

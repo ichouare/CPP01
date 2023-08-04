@@ -17,10 +17,10 @@ OBJ = $(SRC:.cpp=.o)
 all : $(NAME) 
 
 
-$(NAME): $(OBJ) $(HEADERS)
+$(NAME): $(OBJ) 
 	$(FLAG) $(FLAGS) $(OBJ) -o $(NAME)
 	
-%.o : %.cpp $(HEADERS)
+%.o : %.cpp 
 	$(FLAG) $(FLAGS)   -c -o $@ $<
 
 clean:
