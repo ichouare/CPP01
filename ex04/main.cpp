@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 
+
+
 int main(int ac, char **ar)
 {
     if (ac != 4)
@@ -11,23 +13,23 @@ int main(int ac, char **ar)
     std::string filename;
     std::ofstream desFile;
     std::ifstream srcFile;
-     int len  = 0;
+    int len  = 0;
+    int pos = 1;
 
-
-    filename = ".replace";
-    srcFile.open("./fiel1");
-    desFile.open(filename, std::ios::in | std::ios::trunc | std::ios::out);
+    filename = ar[1];
+    filename += ".replace";
+    srcFile.open(ar[1]);
+    desFile.open(filename, std::ios::trunc);
     if(!srcFile.is_open() || !desFile.is_open())
     {
-        std::cout << "file name filed to open" <<std::endl;
-        return 1;
+        std::cout << "file name filed to open" << std::endl;
+        return (1);
     }
-    int pos = 1;
-    while(std::getline(srcFile, line))
+    while (std::getline(srcFile, line))
     {
-        int len  = 0;
+        
         pos = line.find(ar[2]);
-        while(pos != std::string::npos)
+        while (pos != -1)
         {   
             len = line.length();
             line_store = line.substr(pos + strlen(ar[2]), line.length());;
@@ -39,6 +41,7 @@ int main(int ac, char **ar)
         }
            desFile << line;
     }
+    desFile.close();
 
 
     

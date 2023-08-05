@@ -1,12 +1,15 @@
-NAME = Stream
+NAME = harlFilter
 
+
+
+HEADERS = ./Harl.hpp
 
 FLAG =  c++
 
 FLAGS =  -Wall -Wextra -Werror -std=c++98
 
 
-SRC = ./main.cpp 
+SRC = ./main.cpp  ./Harl.cpp
 
 
 OBJ = $(SRC:.cpp=.o)
@@ -14,10 +17,10 @@ OBJ = $(SRC:.cpp=.o)
 all : $(NAME) 
 
 
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ) $(HEADERS)
 	$(FLAG) $(FLAGS) $(OBJ) -o $(NAME)
 	
-%.o : %.cpp 
+%.o : %.cpp $(HEADERS)
 	$(FLAG) $(FLAGS)   -c -o $@ $<
 
 clean:
