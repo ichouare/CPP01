@@ -61,7 +61,7 @@ void Harl::complain(std::string level)
             ptr_func = &Harl::error;
             break;
         default:
-            std::cout << "not complaine for:" << level << std::endl;
+            std::cout << "not complaine for: " << level << std::endl;
             exit(0);
     }
     (this->*ptr_func)();
