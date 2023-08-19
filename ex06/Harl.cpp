@@ -40,8 +40,9 @@ void Harl::complain(std::string level)
 {
     int ch = -1;
     int i = 0;
-    const char*   options[4]  =  { "DEBUG" , "INFO" , "WARN" , "ERROR"};
-    void(Harl::*ptr_func)();
+    typedef void (Harl::*FunctionPtr)();
+    const char*   options[4]  =  { "DEBUG" , "INFO" , "WARNING" , "ERROR"};
+    FunctionPtr pyt_arr[4]= {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     if (level.empty())
         exit(0);
    while(i < 4)
@@ -53,20 +54,15 @@ void Harl::complain(std::string level)
     switch(ch)
     {
         case 0:
-            ptr_func = &Harl::debug;
-            break;
+            (this->*pyt_arr[0])();
         case 1:
-            ptr_func = &Harl::info;
-            break;
+          (this->*pyt_arr[1])();
         case 2 :
-            ptr_func = &Harl::warning;
-            break;
+           (this->*pyt_arr[2])();
         case 3:
-            ptr_func = &Harl::error;
+           (this->*pyt_arr[3])();
             break;
         default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-            exit(0);
     }
-    (this->*ptr_func)();
 }

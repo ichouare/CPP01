@@ -22,17 +22,21 @@ int main(int ac, char **ar)
     desFile.open(filename, std::ios::trunc);
     if(!srcFile.is_open() || !desFile.is_open())
     {
-        std::cout << "file name filed to open" << std::endl;
+        std::cout << "file  filed to open" << std::endl;
         return (1);
     }
     if(std::strcmp(ar[2], ar[3]) == 0)
     {
-       while (std::getline(srcFile, line))
-           desFile << line;
+       while (std::getline(srcFile, line, '\0'))
+       {
+            std::cout << line;  
+            desFile << line;
+
+       }
     }
     else
     {
-        while (std::getline(srcFile, line))
+        while (std::getline(srcFile, line, '\0'))
         {
             
             pos = line.find(ar[2]);

@@ -36,7 +36,7 @@ void Harl::complain(std::string level)
 {
     int ch = -1;
     int i = 0;
-    const char*   options[4]  =  { "DEBUG" , "INFO" , "WARN" , "ERROR"};
+    const char*   options[4]  =  { "DEBUG" , "INFO" , "WARNING" , "ERROR"};
     void(Harl::*ptr_func)();
     if (level.empty())
         exit(0);
